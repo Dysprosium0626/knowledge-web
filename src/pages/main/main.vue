@@ -3,29 +3,19 @@
     <a-layout-sider v-model:collapsed="collapsed" :trigger="null" theme="light" collapsible>
       <div class="logo">Insider</div>
       <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
-        <a-sub-menu key="sub12" @titleClick="toWorkTable">
+        <a-menu-item key="sub12" @titleClick="toMainPage">
           <template #icon>
             <MailOutlined />
           </template>
-          <template #title>工作台</template>
-        </a-sub-menu>
+          <span>首页</span>
+        </a-menu-item>
 
-        <a-sub-menu key="sub1">
+        <a-menu-item key="sub1">
           <template #icon>
             <video-camera-outlined />
           </template>
-          <template #title>Dashboard</template>
-          <a-menu-item key="5" @click="toMetricBoard">数据分析</a-menu-item>
-        </a-sub-menu>
-
-        <a-sub-menu key="sub2">
-          <template #icon>
-            <video-camera-outlined />
-          </template>
-          <template #title>业务功能</template>
-          <a-menu-item key="6" @click="toNewOrg">新建组织</a-menu-item>
-          <a-menu-item key="7" @click="toDuplicateCrossOrg">运维功能</a-menu-item>
-        </a-sub-menu>
+          <span>个人中心</span>
+        </a-menu-item>
       </a-menu>
     </a-layout-sider>
     <a-layout>
@@ -55,20 +45,8 @@ const router = useRouter();
 const selectedKeys = ref(["1"]);
 const collapsed = ref(false);
 
-const toWorkTable = () => {
-  router.push("/main");
-};
-
-const toNewOrg = () => {
-  router.push("/main");
-};
-
-const toMetricBoard = () => {
-  router.push("/main");
-};
-
-const toDuplicateCrossOrg = () => {
-  router.push("/main");
+const toMainPage = () => {
+  router.push("/main/table");
 };
 </script>
 <style lang="less" scoped>

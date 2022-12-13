@@ -15,11 +15,11 @@ const routes = [
     name: "main",
     component: () => import("@/pages/main/main.vue"),
     children: [
-      // {
-      //   path: "/main/table",
-      //   name: "table",
-      //   component: () => import("@/pages/work-table/work-table.vue"),
-      // }
+      {
+        path: "/main/table",
+        name: "table",
+        component: () => import("@/pages/main-table/main-table.vue"),
+      },
     ],
   },
   {
