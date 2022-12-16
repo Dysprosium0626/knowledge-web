@@ -3,14 +3,14 @@
     <a-layout-sider v-model:collapsed="collapsed" :trigger="null" theme="light" collapsible>
       <div class="logo">Insider</div>
       <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
-        <a-menu-item key="sub12" @titleClick="toMainPage">
+        <a-menu-item key="sub12" @click="toMainPage">
           <template #icon>
             <MailOutlined />
           </template>
           <span>首页</span>
         </a-menu-item>
 
-        <a-menu-item key="sub1">
+        <a-menu-item key="sub1" @click="toUserCenter">
           <template #icon>
             <video-camera-outlined />
           </template>
@@ -47,6 +47,11 @@ const collapsed = ref(false);
 
 const toMainPage = () => {
   router.push("/main/table");
+};
+
+const toUserCenter = () => {
+  console.log("123");
+  router.push("/main/user-center");
 };
 </script>
 <style lang="less" scoped>

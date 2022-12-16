@@ -6,7 +6,7 @@
       item-layout="vertical"
       size="large"
       :pagination="{ ...pagination }"
-      :data-source="listData"
+      :data-source="newsData.news"
     >
       <template #footer>
         <div>@insider</div>
@@ -41,20 +41,12 @@
 
 <script setup>
 //import { StarOutlined, LikeOutlined, MessageOutlined } from "@ant-design/icons-vue";
+import { onMounted, reactive } from "vue";
+import { listNews } from "@/service/news";
 
-const listData = [];
-
-for (let i = 0; i < 23; i++) {
-  listData.push({
-    href: "https://www.antdv.com/",
-    title: `这是咱们的一篇文章 ${i}`,
-    avatar: "https://gitlab.userly.cn/uploads/-/system/user/avatar/6/avatar.png",
-    description:
-      "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-    content:
-      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
-  });
-}
+var newsData = reactive({
+  news: [],
+});
 
 const pagination = {
   onChange: (page) => {
@@ -63,6 +55,20 @@ const pagination = {
   pageSize: 10,
 };
 const actions = [{ type: "LikeOutlined", text: "156" }];
+const fetchAllNews = async () => {
+  const res = await listNews();
+  const news = res.data.data;
+  console.log(news);
+  news.forEach((news) => {
+    newsData.news.push({
+      href: "https://www.antdv.com/",
+      title: news.newsPublishVo.title,
+      avatar: "https://gitlab.userly.cn/uploads/-/system/user/avatar/6/avatar.png",
+      content: news.newsPublishVo.content,
+    });
+  });
+};
+onMounted(fetchAllNews);
 </script>
 
 <style lang="less" scoped></style>
