@@ -3,6 +3,7 @@
     <a-layout-sider v-model:collapsed="collapsed" :trigger="null" theme="light" collapsible>
       <div class="logo">Insider</div>
       <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
+        <a-button type="primary" @click="toPublishNews">发布新闻</a-button>
         <a-menu-item key="sub12" @click="toMainPage">
           <template #icon>
             <MailOutlined />
@@ -50,8 +51,11 @@ const toMainPage = () => {
 };
 
 const toUserCenter = () => {
-  console.log("123");
   router.push("/main/user-center");
+};
+
+const toPublishNews = () => {
+  router.push("/main/publish-news");
 };
 </script>
 <style lang="less" scoped>
@@ -81,6 +85,7 @@ const toUserCenter = () => {
 .site-layout .site-layout-background {
   background: rgb(231, 17, 17);
 }
+
 .a-header {
   .header-avatar {
     float: right;

@@ -25,6 +25,16 @@ const routes = [
         name: "user-center",
         component: () => import("@/pages/user-center/user-center.vue"),
       },
+      {
+        path: "/main/publish-news",
+        name: "publish-news",
+        component: () => import("@/pages/publish-news/publish-news.vue"),
+      },
+      {
+        path: "/main/news-detail/:id",
+        name: "news-detail",
+        component: () => import("@/pages/news-detail/news-detail.vue"),
+      },
     ],
   },
   {
