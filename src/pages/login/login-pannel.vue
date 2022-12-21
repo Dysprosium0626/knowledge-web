@@ -45,25 +45,25 @@
 <script setup>
 import CommonLayout from "@/layouts/CommonLayout";
 import { useRouter } from "vue-router";
-
+import { message } from "ant-design-vue";
 import { reactive } from "vue";
+import Cookies from "js-cookie";
+import { login } from "@/service/user";
 
-// const store = useStore();
 const router = useRouter();
 const loginParam = reactive({
   username: "",
   password: "",
 });
 const submitLogin = async () => {
-  router.push("/main");
-  //const res = await login(loginParam.username, loginParam.password);
-  // 判断登陆是否成功 如果没有 告警
-  // if (res.data.status.errorCode === "0") {
-  //   Cookies.set("insider-token", res.data.data.access_token);
-
-  // } else {
-  //   message.warn("登陆信息错误");
-  // }
+  const res = await login(loginParam.username, loginParam.password);
+  console.log(res.data);
+  if (res.data.code == 200) {
+    router.push("/main/table");
+    Cookies.set("insider-token", "123123");
+  } else {
+    message.warn("登陆信息错误");
+  }
 };
 </script>
 

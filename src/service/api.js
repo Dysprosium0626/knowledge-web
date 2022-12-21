@@ -19,4 +19,5 @@ module.exports = {
   ADD_FILE: `${BASE_URL}/files/add`,
   UPDATE_NEWS_COVER: `${BASE_URL}/news`,
   UPDATE_USER_INFO: `${BASE_URL}/user`,
+  LOGIN: `${BASE_URL}/user/login`,
 };

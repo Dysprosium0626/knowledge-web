@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
+
 const routes = [
   {
     path: "/",
@@ -47,18 +48,19 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
-// router.beforeEach((to) => {
-//   if (to.path !== "/login") {
-//     const token = Cookies.get("insider-token");
-//     if (!token) {
-//       return "/login";
-//     }
-//   } else if (to.path === "/login") {
-//     const token = Cookies.get("insider-token");
-//     if (token) {
-//       return "/main";
-//     }
-//   }
-// });
+
+router.beforeEach((to) => {
+  if (to.path !== "/login") {
+    const token = Cookies.get("insider-token");
+    if (!token) {
+      return "/login";
+    }
+  } else if (to.path === "/login") {
+    const token = Cookies.get("insider-token");
+    if (token) {
+      return "/main";
+    }
+  }
+});
 
 export default router;
