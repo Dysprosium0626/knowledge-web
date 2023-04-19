@@ -1,21 +1,45 @@
 <template>
   <a-layout theme="light">
     <a-layout-sider v-model:collapsed="collapsed" :trigger="null" theme="light" collapsible>
-      <div class="logo">Insider</div>
+      <div class="logo">Knowledge</div>
       <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
-        <a-button type="primary" @click="toPublishNews">发布新闻</a-button>
-        <a-menu-item key="sub12" @click="toMainPage">
+        <a-menu-item key="sub0" @click="toMainPage">
           <template #icon>
             <MailOutlined />
           </template>
-          <span>首页</span>
+          <span>个人中心</span>
         </a-menu-item>
-
         <a-menu-item key="sub1" @click="toUserCenter">
           <template #icon>
-            <video-camera-outlined />
+            <team-outlined />
           </template>
-          <span>个人中心</span>
+          <span>用户管理</span>
+        </a-menu-item>
+
+        <a-menu-item key="sub2" @click="toUserCenter">
+          <template #icon>
+            <security-scan-outlined />
+          </template>
+          <span>审核管理</span>
+        </a-menu-item>
+
+        <a-menu-item key="sub3" @click="toUserCenter">
+          <template #icon>
+            <bar-chart-outlined />
+          </template>
+          <span>数据管理</span>
+        </a-menu-item>
+        <a-menu-item key="sub4" @click="toUserCenter">
+          <template #icon>
+            <save-outlined />
+          </template>
+          <span>数据备份</span>
+        </a-menu-item>
+        <a-menu-item key="sub5" @click="toUserCenter">
+          <template #icon>
+            <bar-chart-outlined />
+          </template>
+          <span>日志管理</span>
         </a-menu-item>
       </a-menu>
     </a-layout-sider>
@@ -37,7 +61,7 @@
 </template>
 
 <script setup>
-import { VideoCameraOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons-vue";
+import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons-vue";
 import HeaderAvatar from "@/layouts/header/header-avatar.vue";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
@@ -51,11 +75,7 @@ const toMainPage = () => {
 };
 
 const toUserCenter = () => {
-  router.push("/main/user-center");
-};
-
-const toPublishNews = () => {
-  router.push("/main/publish-news");
+  router.push("/main/user");
 };
 </script>
 <style lang="less" scoped>
@@ -76,7 +96,7 @@ const toPublishNews = () => {
   margin: 10px;
   margin-left: 10px;
   font-size: 23px;
-  color: #18ff56;
+  color: #ad7373;
   font-family: "Myriad Pro", "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-weight: 600;
   position: relative;
