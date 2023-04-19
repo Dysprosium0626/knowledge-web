@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 const routes = [
   {
@@ -8,8 +8,8 @@ const routes = [
   },
   {
     path: "/login",
-    name: "login-pannel",
-    component: () => import("@/pages/login/login-pannel.vue"),
+    name: "login",
+    component: () => import("@/pages/login/login.vue"),
   },
   {
     path: "/main",
@@ -20,6 +20,11 @@ const routes = [
         path: "/main/table",
         name: "table",
         component: () => import("@/pages/main-table/main-table.vue"),
+      },
+      {
+        path: "/main/user",
+        name: "user",
+        component: () => import("@/pages/user-management/user-management.vue"),
       },
       {
         path: "/main/user-center",
@@ -47,20 +52,6 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-});
-
-router.beforeEach((to) => {
-  if (to.path !== "/login") {
-    const token = Cookies.get("insider-token");
-    if (!token) {
-      return "/login";
-    }
-  } else if (to.path === "/login") {
-    const token = Cookies.get("insider-token");
-    if (token) {
-      return "/main";
-    }
-  }
 });
 
 export default router;

@@ -1,12 +1,11 @@
-const API_PROXY_PREFIX = "/api";
-// qa 110.42.187.29
+const API_PROXY_PREFIX = "http://localhost:8081";
 // prod
-const PROD_URL = "http://110.42.187.29:8081";
+const PROD_URL = "http://101.43.245.160:8081";
 //base url
 const BASE_URL = process.env.NODE_ENV === "production" ? PROD_URL : API_PROXY_PREFIX;
 //导出api服务地址
 module.exports = {
-  LIST_ALL: `${BASE_URL}/news/all`,
+  LIST_ALL_USERS: `${BASE_URL}/user/all`,
   PUBLISH_NEWS: `${BASE_URL}/news/add/2`,
   GET_USER_DETAIL: `${BASE_URL}/user/2`,
   GET_NEWS_DETAIL: `${BASE_URL}/news`,
