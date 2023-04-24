@@ -21,6 +21,7 @@ var userData = reactive({
 
 const fetchAllUsers = async () => {
   const res = await getAllUsers();
+  console.log(res);
   let userList = res.data.data;
   userList.forEach((user) => {
     console.log(user);

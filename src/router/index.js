@@ -26,10 +26,16 @@ const routes = [
         name: "user",
         component: () => import("@/pages/user-management/user-management.vue"),
       },
+
       {
-        path: "/main/user-center",
-        name: "user-center",
-        component: () => import("@/pages/user-center/user-center.vue"),
+        path: "/main/log",
+        name: "log",
+        component: () => import("@/pages/log-management/log-management.vue"),
+      },
+      {
+        path: "/main/backup",
+        name: "backup",
+        component: () => import("@/pages/backup/backup.vue"),
       },
       {
         path: "/main/publish-news",

@@ -7,15 +7,7 @@
       <div class="desc">Knowledge后台管理子系统</div>
     </div>
     <div class="login">
-      <a-form
-        :model="formState"
-        name="basic"
-        :label-col="{ span: 8 }"
-        :wrapper-col="{ span: 16 }"
-        autocomplete="off"
-        @finish="onFinish"
-        @finishFailed="onFinishFailed"
-      >
+      <a-form :model="formState" name="basic" autocomplete="off">
         <a-form-item
           label="Username"
           name="username"
@@ -32,12 +24,12 @@
           <a-input-password v-model:value="formState.password" />
         </a-form-item>
 
-        <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
-          <a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
+        <a-form-item name="remember">
+          <a-checkbox>Remember me</a-checkbox>
         </a-form-item>
 
         <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-          <a-button type="primary" html-type="submit" @click="onClickButton">Submit</a-button>
+          <a-button type="primary" html-type="submit" @click="onClick">Submit</a-button>
         </a-form-item>
       </a-form>
     </div>
@@ -55,22 +47,27 @@ const formState = reactive({
   password: "",
   remember: true,
 });
-const onFinish = (values) => {
-  console.log("Success:", values);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
 
-const onClickButton = () => {
-  // TODO modify the validation into api calls
+const onClick = () => {
+  console.log(formState.username);
+  console.log(formState.password);
   if (formState.username == "123" && formState.password == "123") {
     message.success("successfully login");
     router.push("/main/table");
   } else {
-    message.warn("invalid username or password");
+    message.error("invalid username or password");
   }
 };
+
+// const onClickButton = () => {
+//   // TODO modify the validation into api calls
+//   if (formState.username == "123" && formState.password == "123") {
+//     message.success("successfully login");
+//     router.push("/main/table");
+//   } else {
+//     message.warn("invalid username or password");
+//   }
+// };
 </script>
 
 <style lang="less" scoped>
