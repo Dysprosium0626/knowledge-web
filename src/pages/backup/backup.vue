@@ -7,7 +7,7 @@
         <a-table
           :columns="columns"
           :data-source="backupData.backups"
-          :row-selection="rowSelection"
+          :row-key="(record) => record.id"
           :scroll="{ x: 1500, y: 1000 }"
         >
           <template #bodyCell="{ column, record }">
@@ -99,6 +99,8 @@ const columns = [
   {
     title: "operation",
     dataIndex: "operation",
+    fixed: "right",
+    width: 100,
   },
 ];
 

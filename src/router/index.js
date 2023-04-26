@@ -26,7 +26,11 @@ const routes = [
         name: "user",
         component: () => import("@/pages/user-management/user-management.vue"),
       },
-
+      {
+        path: "/main/artifact",
+        name: "artifact",
+        component: () => import("@/pages/artifact-management/artifact-management.vue"),
+      },
       {
         path: "/main/log",
         name: "log",
@@ -36,16 +40,6 @@ const routes = [
         path: "/main/backup",
         name: "backup",
         component: () => import("@/pages/backup/backup.vue"),
-      },
-      {
-        path: "/main/publish-news",
-        name: "publish-news",
-        component: () => import("@/pages/publish-news/publish-news.vue"),
-      },
-      {
-        path: "/main/news-detail/:id",
-        name: "news-detail",
-        component: () => import("@/pages/news-detail/news-detail.vue"),
       },
     ],
   },
