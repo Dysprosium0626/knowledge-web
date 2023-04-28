@@ -18,7 +18,7 @@ const METHOD = {
 async function request(url, method, params, config) {
   switch (method) {
     case METHOD.GET:
-      return axios.get(url, params);
+      return axios.get(url, { params, ...config });
     case METHOD.POST:
       return axios.post(url, params, config);
     case METHOD.PUT:

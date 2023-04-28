@@ -2,10 +2,21 @@
   <a-layout-content
     :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '1080px' }"
   >
+    <div style="margin-bottom: 16px">
+      <a-button type="primary" :disabled="!hasSelected" :loading="loading" @click="start">
+        Delete
+      </a-button>
+      <span style="margin-left: 8px">
+        <template v-if="hasSelected">
+          {{ `Selected ${state.selectedRowKeys.length} items` }}
+        </template>
+      </span>
+    </div>
     <a-table
       :columns="columns"
       :data-source="artifactData.artifacts"
       :scroll="{ x: 1500, y: 1000 }"
+      :row-selection="{ selectedRowKeys: state.selectedRowKeys, onChange: onSelectChange }"
       :row-key="(record) => record.id"
     >
       <template #bodyCell="{ column, record, text }">
@@ -15,7 +26,21 @@
         <template v-if="column.key === 'img_url'">
           <a :href="record.img_url" target="_blank">{{ record.img_url }}</a>
         </template>
-        <template v-if="['title', 'dated', 'artist'].includes(column.dataIndex)">
+        <template
+          v-if="
+            [
+              'title',
+              'dated',
+              'artist',
+              'role',
+              'department',
+              'medium',
+              'country',
+              'description',
+              'comments',
+            ].includes(column.dataIndex)
+          "
+        >
           <div>
             <a-input
               v-if="editableData[record.id]"
@@ -38,7 +63,7 @@
             <a-button type="primary" @click="edit(record.id)">Edit</a-button>
           </span>
           <a-divider type="vertical" />
-          <a-popconfirm title="Sure to delete?" @confirm="delete record.id">
+          <a-popconfirm title="Sure to delete?" @confirm="onDelete(record.id)">
             <a-button type="primary">Delete</a-button>
           </a-popconfirm>
         </template>
@@ -63,7 +88,7 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { reactive, computed } from "vue";
 import { cloneDeep } from "lodash-es";
 
 var artifactData = reactive({
@@ -339,6 +364,27 @@ const save = (id) => {
 };
 const cancel = (id) => {
   delete editableData[id];
+};
+
+const onDelete = (id) => {
+  artifactData.artifacts = artifactData.artifacts.filter((item) => item.id !== id);
+};
+
+const state = reactive({
+  selectedRowKeys: [],
+  // Check here to configure the default column
+  loading: false,
+});
+const hasSelected = computed(() => state.selectedRowKeys.length > 0);
+const start = () => {
+  console.log(state.selectedRowKeys);
+  state.selectedRowKeys.forEach((item) => {
+    onDelete(item);
+  });
+};
+const onSelectChange = (selectedRowKeys) => {
+  console.log("selectedRowKeys changed: ", selectedRowKeys);
+  state.selectedRowKeys = selectedRowKeys;
 };
 
 // onMounted(fetchAllUsers);
