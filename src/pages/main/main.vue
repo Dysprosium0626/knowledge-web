@@ -23,19 +23,19 @@
           <span>审核管理</span>
         </a-menu-item>
 
-        <a-menu-item key="sub3" @click="toUserCenter">
+        <a-menu-item key="sub3" @click="toArtifact">
           <template #icon>
             <bar-chart-outlined />
           </template>
           <span>数据管理</span>
         </a-menu-item>
-        <a-menu-item key="sub4" @click="toUserCenter">
+        <a-menu-item key="sub4" @click="toBackcup">
           <template #icon>
             <save-outlined />
           </template>
           <span>数据备份</span>
         </a-menu-item>
-        <a-menu-item key="sub5" @click="toUserCenter">
+        <a-menu-item key="sub5" @click="toLog">
           <template #icon>
             <bar-chart-outlined />
           </template>
@@ -76,6 +76,18 @@ const toMainPage = () => {
 
 const toUserCenter = () => {
   router.push("/main/user");
+};
+
+const toArtifact = () => {
+  router.push("/main/artifact");
+};
+
+const toLog = () => {
+  router.push("/main/log");
+};
+
+const toBackcup = () => {
+  router.push("/main/backup");
 };
 </script>
 <style lang="less" scoped>
