@@ -18,6 +18,7 @@
       :scroll="{ x: 1500, y: 1000 }"
       :row-selection="{ selectedRowKeys: state.selectedRowKeys, onChange: onSelectChange }"
       :row-key="(record) => record.id"
+      @resizeColumn="handleResizeColumn"
     >
       <template #bodyCell="{ column, record, text }">
         <template v-if="column.key === 'web_url'">
@@ -55,17 +56,18 @@
         <template v-if="column.key === 'operation'">
           <span v-if="editableData[record.id]">
             <a-button type="primary" @click="save(record.id)">Save</a-button>
+            <a-divider type="vertical" />
             <a-popconfirm title="Sure to cancel?" @confirm="cancel(record.id)">
               <a-button type="primary">Cancel</a-button>
             </a-popconfirm>
           </span>
           <span v-else>
             <a-button type="primary" @click="edit(record.id)">Edit</a-button>
+            <a-divider type="vertical" />
+            <a-popconfirm title="Sure to delete?" @confirm="onDelete(record.id)">
+              <a-button type="primary">Delete</a-button>
+            </a-popconfirm>
           </span>
-          <a-divider type="vertical" />
-          <a-popconfirm title="Sure to delete?" @confirm="onDelete(record.id)">
-            <a-button type="primary">Delete</a-button>
-          </a-popconfirm>
         </template>
       </template>
       <template #expandedRowRender="{ record }">
@@ -273,43 +275,71 @@ const columns = [
     title: "title",
     dataIndex: "title",
     key: "title",
+    ellipsis: true,
+    resizable: true,
     width: 300,
+    minWidth: 300,
+    maxWidth: 500,
   },
   {
     title: "dated",
     dataIndex: "dated",
     key: "dated",
+    ellipsis: true,
+    resizable: true,
     width: 150,
+    minWidth: 150,
+    maxWidth: 300,
   },
   {
     title: "artist",
     dataIndex: "artist",
     key: "artist",
+    ellipsis: true,
+    resizable: true,
     width: 150,
+    minWidth: 150,
+    maxWidth: 300,
   },
   {
     title: "role",
     dataIndex: "role",
     key: "role",
+    ellipsis: true,
+    resizable: true,
     width: 150,
+    minWidth: 150,
+    maxWidth: 300,
   },
   {
     title: "department",
     dataIndex: "department",
     key: "department",
+    ellipsis: true,
+    resizable: true,
     width: 150,
+    minWidth: 150,
+    maxWidth: 300,
   },
   {
     title: "medium",
     dataIndex: "medium",
     key: "medium",
+    ellipsis: true,
+    resizable: true,
     width: 150,
+    minWidth: 150,
+    maxWidth: 300,
   },
   {
     title: "country",
     dataIndex: "country",
     key: "country",
+    ellipsis: true,
+    resizable: true,
     width: 150,
+    minWidth: 150,
+    maxWidth: 300,
   },
   {
     title: "description",
@@ -329,13 +359,13 @@ const columns = [
     title: "web_url",
     dataIndex: "web_url",
     key: "web_url",
-    width: 300,
+    width: 330,
   },
   {
     title: "img_url",
     dataIndex: "img_url",
     key: "img_url",
-    width: 300,
+    width: 330,
   },
   {
     title: "submit_time",
@@ -385,6 +415,10 @@ const start = () => {
 const onSelectChange = (selectedRowKeys) => {
   console.log("selectedRowKeys changed: ", selectedRowKeys);
   state.selectedRowKeys = selectedRowKeys;
+};
+
+const handleResizeColumn = (w, col) => {
+  col.width = w;
 };
 
 // onMounted(fetchAllUsers);

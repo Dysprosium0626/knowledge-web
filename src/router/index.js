@@ -27,6 +27,11 @@ const routes = [
         component: () => import("@/pages/user-management/user-management.vue"),
       },
       {
+        path: "/main/audit",
+        name: "audit",
+        component: () => import("@/pages/audit/audit.vue"),
+      },
+      {
         path: "/main/artifact",
         name: "artifact",
         component: () => import("@/pages/artifact-management/artifact-management.vue"),

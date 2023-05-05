@@ -16,7 +16,7 @@
           <span>用户管理</span>
         </a-menu-item>
 
-        <a-menu-item key="sub2" @click="toUserCenter">
+        <a-menu-item key="sub2" @click="toAudit">
           <template #icon>
             <security-scan-outlined />
           </template>
@@ -76,6 +76,10 @@ const toMainPage = () => {
 
 const toUserCenter = () => {
   router.push("/main/user");
+};
+
+const toAudit = () => {
+  router.push("/main/audit");
 };
 
 const toArtifact = () => {

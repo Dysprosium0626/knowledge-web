@@ -10,4 +10,6 @@ module.exports = {
   LIST_ALL_BACKUPS: `${BASE_URL}/mysql/backupsList`,
   ROLLBACK_BACKUP: `${BASE_URL}/mysql/rollback`,
   BACKUP_DB: `${BASE_URL}/mysql/mysqlBackups`,
+  LIST_ALL_AUDITS: `${BASE_URL}/audit/all`,
+  VERIFY_IMAGE: `${BASE_URL}/audit/verify`,
 };
