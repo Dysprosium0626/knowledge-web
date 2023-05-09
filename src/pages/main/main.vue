@@ -3,7 +3,7 @@
     <a-layout-sider v-model:collapsed="collapsed" :trigger="null" theme="light" collapsible>
       <div class="logo">Knowledge</div>
       <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
-        <a-menu-item key="sub0" @click="toMainPage">
+        <a-menu-item key="sub0" @click="toMe">
           <template #icon>
             <MailOutlined />
           </template>
@@ -16,7 +16,7 @@
           <span>用户管理</span>
         </a-menu-item>
 
-        <a-menu-item key="sub2" @click="toUserCenter">
+        <a-menu-item key="sub2" @click="toAudit">
           <template #icon>
             <security-scan-outlined />
           </template>
@@ -70,12 +70,12 @@ const router = useRouter();
 const selectedKeys = ref(["1"]);
 const collapsed = ref(false);
 
-const toMainPage = () => {
-  router.push("/main/table");
-};
-
 const toUserCenter = () => {
   router.push("/main/user");
+};
+
+const toAudit = () => {
+  router.push("/main/audit");
 };
 
 const toArtifact = () => {
@@ -88,6 +88,10 @@ const toLog = () => {
 
 const toBackcup = () => {
   router.push("/main/backup");
+};
+
+const toMe = () => {
+  router.push("/main/me");
 };
 </script>
 <style lang="less" scoped>

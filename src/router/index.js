@@ -9,7 +9,12 @@ const routes = [
   {
     path: "/login",
     name: "login",
-    component: () => import("@/pages/login/login.vue"),
+    component: () => import("@/pages/login/login2.vue"),
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: () => import("@/pages/register/register.vue"),
   },
   {
     path: "/main",
@@ -17,14 +22,19 @@ const routes = [
     component: () => import("@/pages/main/main.vue"),
     children: [
       {
-        path: "/main/table",
-        name: "table",
-        component: () => import("@/pages/main-table/main-table.vue"),
+        path: "/main/me",
+        name: "user-center",
+        component: () => import("@/pages/user-center/user-center.vue"),
       },
       {
         path: "/main/user",
         name: "user",
         component: () => import("@/pages/user-management/user-management.vue"),
+      },
+      {
+        path: "/main/audit",
+        name: "audit",
+        component: () => import("@/pages/audit/audit.vue"),
       },
       {
         path: "/main/artifact",

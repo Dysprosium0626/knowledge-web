@@ -24,6 +24,8 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "multer-s3": "^3.0.1",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
@@ -45,6 +47,7 @@
     "husky": "^8.0.0",
     "less": "^4.0.0",
     "less-loader": "^8.0.0",
+    "node-sass": "^8.0.0",
     "prettier": "^2.4.1"
   },
   "config": {
