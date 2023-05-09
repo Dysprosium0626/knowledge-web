@@ -1,6 +1,6 @@
-const API_PROXY_PREFIX = "http://localhost:8081";
+const API_PROXY_PREFIX = "http://101.43.245.160:8081/";
 // prod
-const PROD_URL = "http://localhost:8081";
+const PROD_URL = "http://101.43.245.160:8081/";
 //base url
 const BASE_URL = process.env.NODE_ENV === "production" ? PROD_URL : API_PROXY_PREFIX;
 //导出api服务地址
