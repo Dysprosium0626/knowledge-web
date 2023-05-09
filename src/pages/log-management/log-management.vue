@@ -25,6 +25,18 @@
             </a-tag>
           </span>
         </template>
+        <template v-if="column.key === 'logType'">
+          <span>
+            <a-tag
+              :key="record.logType"
+              :color="
+                record.logType === 'INFO' ? 'green' : record.logType === 'ERROR' ? 'red' : 'blue'
+              "
+            >
+              {{ record.logType.toUpperCase() }}
+            </a-tag>
+          </span>
+        </template>
       </template>
     </a-table>
   </a-layout-content>
@@ -62,6 +74,17 @@ const columns = [
     key: "logType",
     dataIndex: "logType",
     width: 100,
+    filters: [
+      {
+        text: "INFO",
+        value: "INFO",
+      },
+      {
+        text: "ERROR",
+        value: "ERROR",
+      },
+    ],
+    onFilter: (value, record) => record.logType.indexOf(value) === 0,
   },
   {
     title: "createDate",
@@ -74,6 +97,7 @@ const columns = [
   {
     title: "exceptionInfo",
     dataIndex: "exceptionInfo",
+    ellipsis: true,
   },
   {
     title: "executeTime",
@@ -87,6 +111,25 @@ const columns = [
     title: "requestMethod",
     dataIndex: "requestMethod",
     key: "requestMethod",
+    filters: [
+      {
+        text: "GET",
+        value: "GET",
+      },
+      {
+        text: "POST",
+        value: "POST",
+      },
+      {
+        text: "PUT",
+        value: "PUT",
+      },
+      {
+        text: "DELETE",
+        value: "DELETE",
+      },
+    ],
+    onFilter: (value, record) => record.requestMethod.indexOf(value) === 0,
   },
   {
     title: "requestParams",

@@ -3,7 +3,7 @@
     :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '1080px' }"
   >
     <div style="margin-bottom: 16px">
-      <a-button type="primary" :disabled="!hasSelected" :loading="loading" @click="start">
+      <a-button type="primary" :disabled="!hasSelected" :loading="loading" @click="handleDelete">
         Delete
       </a-button>
       <span style="margin-left: 8px">
@@ -406,7 +406,7 @@ const state = reactive({
   loading: false,
 });
 const hasSelected = computed(() => state.selectedRowKeys.length > 0);
-const start = () => {
+const handleDelete = () => {
   console.log(state.selectedRowKeys);
   state.selectedRowKeys.forEach((item) => {
     onDelete(item);
